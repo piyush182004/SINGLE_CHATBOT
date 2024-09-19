@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="chatbox"></div>
+    <input type="text" id="message" placeholder="Type a message...">
+    <button id="send">Send</button>
+
+    <script>
+        document.getElementById('send').addEventListener('click', async () => {
+            const message = document.getElementById('message').value;
+            document.getElementById('message').value = '';
+
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            }).then(res => res.json());
+
+            const chatbox = document.getElementById('chatbox');
+            chatbox.innerHTML += `<div>User: ${message}</div>`;
+            chatbox.innerHTML += `<div>Bot: ${response.response}</div>`;
+            chatbox.scrollTop = chatbox.scrollHeight;
+        });
+    </script>
+</body>
+</html>

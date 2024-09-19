@@ -1,0 +1,14 @@
+[
+    {
+        "user_message": "hello",
+        "bot_response": "Hey there! How can I help you today?"
+    },
+    {
+        "user_message": "how are you",
+        "bot_response": "I'm just a chatbot, but I'm doing great! How about you?"
+    },
+    {
+        "user_message": "what's up",
+        "bot_response": "Not much, just here to chat with you. What’s up with you?"
+    }
+]
